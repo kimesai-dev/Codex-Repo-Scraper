@@ -13,7 +13,7 @@ index 0000000..d11a7a2 100644
 +requires the image path and accepts an optional path to the model weights
 +as a second command‑line argument. If no weight path is provided, the script
 +uses the value of the `YOLO_WEIGHTS` environment variable or defaults to
-+`runs/detect/train5/weights/best.pt`.
+`runs/detect/train/weights/best.pt`.
 +
 +```bash
 +python3 detect_button.py <image_path> [weight_path]
@@ -71,31 +71,32 @@ index 0000000..d11a7a2 100644
 +   expects the `train/images` folder for both training and validation.
 +
 +3. **Train YOLOv8 locally**
-+
-+   Install the Ultralytics package in your Python environment:
-+
-+   ```bash
-+   pip install ultralytics
-+   ```
-+
-+   Then launch training using the command below. It uses the lightweight
-+   `yolov8n.yaml` model for 100 epochs with early stopping enabled. Adjust the
-+   image size or other arguments if needed.
-+
-+   ```bash
-+   yolo detect train \
-+     data=model/data.yaml \
-+     model=yolov8n.yaml \
-+     epochs=100 \
-+     imgsz=640 \
-+     patience=10
-+   ```
-+
-+   When training finishes, the best weights are saved at
-+   `runs/detect/train*/weights/best.pt`.
+
+   Install the Ultralytics package in your Python environment:
+
+   ```bash
+   pip install ultralytics
+   ```
+
+   Run the provided helper script to start training. It uses the lightweight
+   `yolov8n.yaml` model for 100 epochs with early stopping enabled:
+
+   ```bash
+   python3 train_model.py
+   ```
+
+   Training outputs the best weights to `runs/detect/train/weights/best.pt`.
 +
 +4. **Run detection with the trained model**
 +
 +   Call `detect_button.py` with the path to the `best.pt` file or place the file
-+   at the default location (`runs/detect/train5/weights/best.pt`). The script
++   at the default location (`runs/detect/train/weights/best.pt`). The script
 +   will print detection results in the JSON format shown above.
+
+5. **(Optional) Visualize detections**
+
+   Use `draw_boxes.py` to save a copy of the image with bounding boxes drawn:
+
+   ```bash
+   python3 draw_boxes.py <image_path> [weight_path] [output_path]
+   ```

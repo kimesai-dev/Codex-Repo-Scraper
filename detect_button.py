@@ -4,7 +4,7 @@ import sys
 
 from ultralytics import YOLO
 
-DEFAULT_WEIGHTS = "runs/detect/train5/weights/best.pt"
+DEFAULT_WEIGHTS = "runs/detect/train/weights/best.pt"
 
 
 def detect(image_path: str, model_path: str):

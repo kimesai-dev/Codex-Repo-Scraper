@@ -1,5 +1,4 @@
 train: train/images
-val: train/images
 
 nc: 1
-names: ['message_button']
+names: ["message_button"]

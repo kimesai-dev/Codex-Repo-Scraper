@@ -17,6 +17,8 @@ def main():
         project="runs/detect",
         name="train",
         exist_ok=True,
+        device="cpu",
+        workers=1,
     )
 
 
